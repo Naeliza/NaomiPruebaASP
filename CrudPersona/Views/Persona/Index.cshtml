@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CrudPersona.Models.PersonaViewModel>
+
+@{
+    ViewData["Title"] = "Crud Persona";
+}
+
+
+<h3>Crud Persona made with ASP.net Core By Naeliza</h3>
+<hr />
+</br>
+
+<p>
+    <a asp-action="Crear" class="btn btn-outline-secondary">Añadir nueva persona</a>
+</p>
+
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDeNacimiento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaDeNacimiento)
+                </td>
+                <td>
+                    @Html.ActionLink("Borrar", "Borrar", new { id=item.Id  }, new {@class="btn btn-outline-secondary"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

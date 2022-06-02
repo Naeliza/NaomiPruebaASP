@@ -1,0 +1,38 @@
+﻿@model CrudPersona.Models.PersonaViewModel
+
+@{
+    ViewBag.Title = "Crear";
+}
+
+<h1>@ViewBag.Title</h1>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Crear()">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @Html.HiddenFor(model => model.Id)
+                <div class="form-group mb-3">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" type="text" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="FechaDeNacimiento" class="control-label">Fecha De Nacimiento</label>
+                    <input asp-for="FechaDeNacimiento" class="form-control" type="date" />
+                    <span asp-validation-for="FechaDeNacimiento" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-5">
+                    <input type="submit" value="Grabar" class="btn btn-outline-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
